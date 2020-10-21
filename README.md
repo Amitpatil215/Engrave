@@ -83,7 +83,7 @@ Create a pull request to **master** branch of main repo
 *Note:*
 
 * Send a PR for every new feature no matter how small changes are.
-* We have github actions (CI) for dart code analyzation. Make sure while commiting you changes don't have any analyzer warnings.
+* We have github actions (CI) for dart code analyzation. Make sure while commiting your changes don't have any analyzer warnings.
 * Write appropriate comments and commit messages
 
 
@@ -164,8 +164,8 @@ Now, lets dive into the lib folder which has the main code for the application.
 - Must be hosted on  hosting service like Netlify, heroku or whichever suits the requirement.
 
 *Requirement from database
-      - API for performing Post, Get, Update, Delete deta.
-      - Returns Json deta on get request.
+      - API for performing Post, Get, Update, Delete data.
+      - Returns Json data on get request.
       - For post,update request Json data would be provided.
 ```
 
