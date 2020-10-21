@@ -32,7 +32,7 @@ git clone "Forked Repo URL"
 Set main repo as upstream:
 
 ``` git
-git remote add upstream "URL of the main repo"
+git remote add upstream https://github.com/Amitpatil215/Engrave.git
 ```
 
 **Step 4:**
