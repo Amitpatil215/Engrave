@@ -6,6 +6,7 @@ import '../widgets/home_screen_widgets/h_s_list_view.dart';
 import '../widgets/home_screen_widgets/h_s_test_button.dart';
 
 class HomeScreen extends StatelessWidget {
+  static const routeName = 'home-screen';
   @override
   Widget build(BuildContext context) {
     return Scaffold(

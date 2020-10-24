@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import './screens/mainScreen.dart';
+
 import 'package:provider/provider.dart';
 import './screens/home_screen.dart';
+
 import './main_properties/theme.dart';
 import './main_properties/routs.dart';
 import './main_properties/provider_list.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-
   runApp(MyApp());
 }
 
@@ -35,6 +38,7 @@ class MyApp extends StatelessWidget {
         ),
         routes: routeTable,
       ),
+
     );
   }
 }
