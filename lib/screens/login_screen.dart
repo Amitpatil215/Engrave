@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import './home_screen.dart';
+// import 'package:email_validator/email_validator.dart';
+// import '../main_properties/theme.dart';
+// import '../main_properties/routs.dart';
 
 class LoginScreen extends StatelessWidget {
   static const routeName = 'login-screen';
@@ -17,38 +20,43 @@ class LoginScreen extends StatelessWidget {
             children: [
               Container(
                 height: 300,
-                child: Image.asset(
-                  'assets\images\gknbscat.png',
+                child: SvgPicture.asset(
+                  'assets/images/4.svg',
                   fit: BoxFit.cover,
                 ),
               ),
-              Card(
-                elevation: 6,
-                child: Container(
-                  padding: EdgeInsets.all(10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: <Widget>[
-                      TextField(
-                        decoration: InputDecoration(
-                          labelText: 'Username',
+              Form(
+                child: Card(
+                  elevation: 4,
+                  child: Container(
+                    padding: EdgeInsets.all(10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: <Widget>[
+                        TextFormField(
+                          decoration: InputDecoration(
+                            labelText: 'Username',
+                          ),
+                          controller: userController,
                         ),
-                      ),
-                      TextField(
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          labelText: 'Password',
-                          prefixIcon: Icon(Icons.lock),
+                        TextFormField(
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            labelText: 'Password',
+                            prefixIcon: Icon(Icons.lock),
+                          ),
+                          controller: passController,
                         ),
-                      ),
-                      RaisedButton(
-                        onPressed: () {
-                          HomeScreen();
-                        },
-                        child: Text('Login'),
-                        textColor: Colors.purple,
-                      ),
-                    ],
+                        RaisedButton(
+                          onPressed: () {
+                            Navigator.of(context)
+                                .pushNamed(HomeScreen.routeName);
+                          },
+                          child: Text('Login'),
+                          textColor: Colors.purple,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
