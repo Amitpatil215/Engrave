@@ -1,11 +1,46 @@
 //import 'dart:html';
-
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../widgets/profile_screen-widgets/p_s_pick_image.dart';
+import 'package:image_cropper/image_cropper.dart';
+//import '../widgets/profile_screen-widgets/p_s_pick_image.dart';
+import 'package:image_picker/image_picker.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   static const routeName = 'profile';
+  ProfileScreenState createState() => ProfileScreenState();
+}
+
+class ProfileScreenState extends State<ProfileScreen> {
+  File selectedFile;
+
+  Widget getImageWidget() {
+    if (selectedFile != null) {
+      return Image.file(
+        selectedFile,
+        width: 200,
+        height: 200,
+        fit: BoxFit.cover,
+      );
+    } else {
+      return Image.asset(
+        'assets/images/blank_canvas.svg',
+        width: 200,
+        height: 200,
+        fit: BoxFit.cover,
+      );
+    }
+  }
+
+  getImage(ImageSource source) async {
+    File image = await ImagePicker.pickImage(source: source);
+    File cropped = await ImageCropper.cropImage(sourcePath: image.path);
+
+    this.setState(() {
+      selectedFile = cropped;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -30,7 +65,7 @@ class ProfileScreen extends StatelessWidget {
                       children: [
                         IconButton(
                           icon: Icon(Icons.add_a_photo_rounded),
-                          onPressed: null,
+                          onPressed: getImage(ImageSource.camera),
                           //add the image picker here after it select the hashtag
                           color: Colors.white,
                         ),
@@ -67,12 +102,9 @@ class ProfileScreen extends StatelessWidget {
                       child: Card(
                         //if user could insert a profile picture
                         //child: PickImage(),
-                        child: SvgPicture.asset(
-                          'assets/images/blank_canvas.svg',
-                          width: 200,
-                          height: 200,
-                          fit: BoxFit.cover,
-                        ),
+                        //under written code if for reference where
+                        //our profile pic should appear
+                        child: getImageWidget(),
                       ),
                     ),
                   ],
