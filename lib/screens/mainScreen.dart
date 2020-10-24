@@ -96,22 +96,22 @@ class MainScreen extends StatelessWidget {
                         },
                       ),
                     ),
-                    // Container(
-                    //   width: double.infinity,
-                    //   child: RaisedButton(
-                    //     child: Text(
-                    //       'HomeScreen',
-                    //       style: TextStyle(
-                    //         color: Colors.black,
-                    //         fontSize: 20,
-                    //         fontWeight: FontWeight.w600,
-                    //       ),
-                    //     ),
-                    //     onPressed: () {
-                    //       Navigator.of(context).pushNamed(HomeScreen.routeName);
-                    //     },
-                    //   ),
-                    // ),
+                    Container(
+                      width: double.infinity,
+                      child: RaisedButton(
+                        child: Text(
+                          'HomeScreen',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pushNamed(HomeScreen.routeName);
+                        },
+                      ),
+                    ),
                   ],
                 ),
               ),

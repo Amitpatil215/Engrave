@@ -25,21 +25,24 @@ class LoginScreen extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              Form(
+              Container(
+                margin: EdgeInsets.all(10),
                 child: Card(
+                  margin: EdgeInsets.all(10),
                   elevation: 4,
                   child: Container(
                     padding: EdgeInsets.all(10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: <Widget>[
-                        TextFormField(
+                        TextField(
                           decoration: InputDecoration(
                             labelText: 'Username',
+                            prefixIcon: Icon(Icons.account_circle),
                           ),
                           controller: userController,
                         ),
-                        TextFormField(
+                        TextField(
                           obscureText: true,
                           decoration: InputDecoration(
                             labelText: 'Password',

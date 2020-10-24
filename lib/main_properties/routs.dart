@@ -7,14 +7,9 @@ Map<String, Widget Function(BuildContext)> routeTable = {
   LoginScreen.routeName: (ctx) {
     return LoginScreen();
   },
-};
-
-Map<String, Widget Function(BuildContext)> routest = {
   CreateScreen.routeName: (ctx) {
     return CreateScreen();
   },
-};
-Map<String, Widget Function(BuildContext)> rT = {
   HomeScreen.routeName: (ctx) {
     return HomeScreen();
   },
