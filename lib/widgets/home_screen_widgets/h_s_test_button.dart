@@ -1,4 +1,4 @@
-import 'package:engrave/provider/auth.dart';
+import 'package:engrave/provider/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
