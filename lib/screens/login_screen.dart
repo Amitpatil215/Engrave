@@ -1,12 +1,15 @@
+import 'package:engrave/provider/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import './home_screen.dart';
-// import 'package:email_validator/email_validator.dart';
-// import '../main_properties/theme.dart';
-// import '../main_properties/routs.dart';
 
-class LoginScreen extends StatelessWidget {
+import './home_screen.dart';
+
+import 'package:provider/provider.dart';
+
+
+class LoginScreen extends StatefulWidget {
   static const routeName = 'login-screen';
+
   final userController = TextEditingController();
   final passController = TextEditingController();
   @override
@@ -66,5 +69,89 @@ class LoginScreen extends StatelessWidget {
             ],
           ),
         ));
+
+
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  var _isLoading = false;
+  final userController = TextEditingController();
+
+  final passController = TextEditingController();
+
+  void onSaved(BuildContext context) {
+    if (userController.text.isNotEmpty && passController.text.isNotEmpty) {
+      Provider.of<Auth>(context, listen: false).logIn(
+        email: userController.text,
+        password: passController.text,
+      );
+      print(userController.text);
+    } else {}
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Login Screen"),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: 300,
+              child: SvgPicture.asset(
+                'assets/images/4.svg',
+                fit: BoxFit.cover,
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.all(10),
+              child: Card(
+                margin: EdgeInsets.all(10),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30)),
+                elevation: 4,
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: <Widget>[
+                      TextField(
+                        decoration: InputDecoration(
+                          labelText: 'Email',
+                          prefixIcon: Icon(Icons.account_circle),
+                        ),
+                        controller: userController,
+                      ),
+                      TextField(
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          labelText: 'Password',
+                          prefixIcon: Icon(Icons.lock),
+                        ),
+                        controller: passController,
+                      ),
+                      RaisedButton(
+                        onPressed: () {
+                          onSaved(context);
+                          // Navigator.of(context)
+                          //     .pushNamed(HomeScreen.routeName);
+                        },
+                        child: Text('Login'),
+                        textColor: Colors.purple,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+
   }
 }

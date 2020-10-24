@@ -4,7 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import './screens/mainScreen.dart';
 
 import 'package:provider/provider.dart';
+
 import './screens/home_screen.dart';
+
 
 import './main_properties/theme.dart';
 import './main_properties/routs.dart';
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
               context,
               designSize: (MediaQuery.of(context).size),
             );
-            return HomeScreen();
+            return MainScreen();
           },
         ),
         routes: routeTable,
