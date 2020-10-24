@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../screens/img_screen.dart';
 
 class HSListView extends StatelessWidget {
   @override
@@ -15,6 +16,9 @@ class HSListView extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 15),
             child: GestureDetector(
+              onTap: () {
+                Navigator.of(context).pushNamed(ImgScreen.routeName);
+              },
               child: Stack(
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 overflow: Overflow.visible,
