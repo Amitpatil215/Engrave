@@ -5,11 +5,6 @@ import './home_screen.dart';
 import './createscreen.dart';
 import './login_screen.dart';
 
-import '../main_properties/theme.dart';
-import '../main_properties/routs.dart';
-
-
-
 class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

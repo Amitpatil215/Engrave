@@ -5,9 +5,6 @@ import './screens/mainScreen.dart';
 
 import 'package:provider/provider.dart';
 
-import './screens/home_screen.dart';
-
-
 import './main_properties/theme.dart';
 import './main_properties/routs.dart';
 import './main_properties/provider_list.dart';
@@ -40,7 +37,6 @@ class MyApp extends StatelessWidget {
         ),
         routes: routeTable,
       ),
-
     );
   }
 }
