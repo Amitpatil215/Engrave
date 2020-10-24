@@ -30,8 +30,10 @@ class CreateScreen extends StatelessWidget {
               Container(
                 margin: EdgeInsets.all(10),
                 child: Card(
+
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30)),
+
                   elevation: 4,
                   child: Container(
                     padding: EdgeInsets.all(10),
