@@ -3,6 +3,7 @@ import '../screens/login_screen.dart';
 import '../screens/createscreen.dart';
 import '../screens/home_screen.dart';
 import '../screens/img_screen.dart';
+import '../widgets/home_screen_widgets/comment.dart';
 
 Map<String, Widget Function(BuildContext)> routeTable = {
   LoginScreen.routeName: (ctx) {
@@ -16,5 +17,8 @@ Map<String, Widget Function(BuildContext)> routeTable = {
   },
   HomeScreen.routeName: (ctx) {
     return HomeScreen();
+  },
+  CommentPage.routeName: (ctx) {
+    return CommentPage();
   },
 };

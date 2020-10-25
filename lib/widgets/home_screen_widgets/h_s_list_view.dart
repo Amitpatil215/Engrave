@@ -2,8 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../screens/img_screen.dart';
+import './comment.dart';
 
-class HSListView extends StatelessWidget {
+class HSListView extends StatefulWidget {
+  @override
+  _HSListViewState createState() => _HSListViewState();
+}
+
+class _HSListViewState extends State<HSListView> {
+  final commentController = TextEditingController();
+
+  int count = 0;
+  _commentPressed() {
+    setState(() {
+      Navigator.of(context).pushNamed(CommentPage.routeName);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -52,8 +67,43 @@ class HSListView extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
-            height: 10,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: <Widget>[
+                  FlatButton(
+                    onPressed: () {
+                      setState(() {
+                        count = count + 1;
+                      });
+                    },
+                    child: Icon(
+                      Icons.auto_awesome,
+                      size: 30.0,
+                      color: Colors.amber[300],
+                    ),
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      Icons.comment_bank,
+                      size: 30.0,
+                      color: Colors.blue,
+                    ),
+                    onPressed: () {
+                      return _commentPressed();
+                    },
+                  ),
+                ],
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                child: Text(
+                  count.toString(),
+                  style: TextStyle(color: Colors.black, fontSize: 16),
+                ),
+              ),
+            ],
           ),
         ],
       ),
