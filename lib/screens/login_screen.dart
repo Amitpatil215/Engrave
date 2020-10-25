@@ -11,19 +11,25 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
- // var _isLoading = false;
+  var _isLoading = false;
   final userController = TextEditingController();
 
   final passController = TextEditingController();
 
-  void onSaved(BuildContext context) {
+  void onSaved(BuildContext context) async {
+    setState(() {
+      _isLoading = true;
+    });
     if (userController.text.isNotEmpty && passController.text.isNotEmpty) {
-      Provider.of<Auth>(context, listen: false).logIn(
+      await Provider.of<Auth>(context, listen: false).logIn(
         email: userController.text,
         password: passController.text,
       );
       print(userController.text);
     } else {}
+    setState(() {
+      _isLoading = false;
+    });
   }
 
   @override
@@ -69,15 +75,15 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         controller: passController,
                       ),
-                      RaisedButton(
-                        onPressed: () {
-                          onSaved(context);
-                          // Navigator.of(context)
-                          //     .pushNamed(HomeScreen.routeName);
-                        },
-                        child: Text('Login'),
-                        textColor: Colors.purple,
-                      ),
+                      _isLoading
+                          ? CircularProgressIndicator()
+                          : RaisedButton(
+                              onPressed: () {
+                                onSaved(context);
+                              },
+                              child: Text('Login'),
+                              textColor: Colors.purple,
+                            ),
                     ],
                   ),
                 ),

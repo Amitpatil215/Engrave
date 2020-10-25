@@ -41,26 +41,41 @@ class Auth with ChangeNotifier {
       'Content-Type': 'application/json;charset=UTF-8',
       'Charset': 'utf-8',
     };
-    final url = "https://engraveapi.herokuapp.com/api/auth/$urlSegment";
+    var url = "https://engraveapi.herokuapp.com/api/auth/$urlSegment";
 
     try {
-      final response = await httpUsing.post(
-        url,
-        headers: headers,
-        body: json.encode(
-          {
-            "username": userName,
-            "email": email,
-            "password": password,
-          },
-        ),
-      );
+      if (urlSegment == "register") {
+        final response = await httpUsing.post(url,
+            headers: headers,
+            body: json.encode(
+              {
+                "username": userName,
+                "email": email,
+                "password": password,
+              },
+            ));
+
+        final responseData = json.decode(response.body);
+        print("responded data $responseData.");
+        urlSegment = "login";
+        url = "https://engraveapi.herokuapp.com/api/auth/$urlSegment";
+      }
+
+      final response = await httpUsing.post(url,
+          headers: headers,
+          body: json.encode(
+            {
+              "email": email,
+              "password": password,
+            },
+          ));
       // final response = await httpUsing.get(
       //   url,
       //   headers: headers,
       // );
+
       final responseData = json.decode(response.body);
-      print("responded data");
+      print("responded data $responseData.");
       print(responseData['user']['_id']);
 
       _token = responseData['token'];
