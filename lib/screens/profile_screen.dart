@@ -1,10 +1,13 @@
 //import 'dart:html';
 import 'dart:io';
+import 'package:engrave/provider/auth_provider.dart';
+import 'package:engrave/provider/firestore_image_upload.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_cropper/image_cropper.dart';
 //import '../widgets/profile_screen-widgets/p_s_pick_image.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatefulWidget {
   static const routeName = 'profile';
@@ -33,12 +36,18 @@ class ProfileScreenState extends State<ProfileScreen> {
   }
 
   getImage(ImageSource source) async {
-    File image = await ImagePicker.pickImage(source: source);
-    File cropped = await ImageCropper.cropImage(sourcePath: image.path);
-
-    this.setState(() {
-      selectedFile = cropped;
-    });
+    try {
+      File image = await ImagePicker.pickImage(source: source);
+      File cropped = await ImageCropper.cropImage(sourcePath: image.path);
+      this.setState(() {
+        selectedFile = cropped;
+      });
+      final userID = Provider.of<Auth>(context, listen: false).userId;
+      await Provider.of<FirestoreImageUpload>(context, listen: false)
+          .uploadProfileImage(cropped, userID);
+    } catch (error) {
+      print("Error while picking iamge $error");
+    }
   }
 
   @override
