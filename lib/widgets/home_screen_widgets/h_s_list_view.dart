@@ -14,36 +14,38 @@ class HSListView extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 15),
-            child: Stack(
-              clipBehavior: Clip.antiAliasWithSaveLayer,
-              overflow: Overflow.visible,
-              children: [
-                Container(
-                  height: 170,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [Colors.red, Colors.blue],
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-                Positioned(
-                  bottom: 100,
-                  left: 22.w,
-                  child: Container(
-                    height: 140,
-                    width: 320.w,
-                    child: SvgPicture.asset('assets/images/dream_art.svg'),
+            child: GestureDetector(
+              child: Stack(
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                overflow: Overflow.visible,
+                children: [
+                  Container(
+                    height: 170,
+                    width: double.infinity,
                     decoration: BoxDecoration(
-                      // color: Colors.red,
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [Colors.red, Colors.blue],
+                      ),
                       borderRadius: BorderRadius.circular(20),
                     ),
                   ),
-                ),
-              ],
+                  Positioned(
+                    bottom: 100,
+                    left: 22.w,
+                    child: Container(
+                      height: 140,
+                      width: 320.w,
+                      child: SvgPicture.asset('assets/images/dream_art.svg'),
+                      decoration: BoxDecoration(
+                        // color: Colors.red,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           SizedBox(

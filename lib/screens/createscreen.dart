@@ -1,31 +1,41 @@
 import 'package:engrave/provider/auth_provider.dart';
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
-class LoginScreen extends StatefulWidget {
-  static const routeName = 'login-screen';
+
+class CreateScreen extends StatefulWidget {
+  static const routeName = 'Signup';
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _CreateScreenState createState() => _CreateScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  var _isLoading = false;
-  final userController = TextEditingController();
+class _CreateScreenState extends State<CreateScreen> {
+  final usernameController = TextEditingController();
 
-  final passController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  final emailController = TextEditingController();
+  bool _isLoading = false;
 
   void onSaved(BuildContext context) async {
     setState(() {
       _isLoading = true;
     });
-    if (userController.text.isNotEmpty && passController.text.isNotEmpty) {
-      await Provider.of<Auth>(context, listen: false).logIn(
-        email: userController.text,
-        password: passController.text,
-      );
-      print(userController.text);
+    if (usernameController.text.isNotEmpty &&
+        passwordController.text.isNotEmpty &&
+        emailController.text.isNotEmpty) {
+      print("username ${usernameController.text}");
+      print("pass ${passwordController.text}");
+      print("email ${emailController.text}");
+
+      await Provider.of<Auth>(context, listen: false).signUP(
+          email: emailController.text,
+          password: passwordController.text,
+          username: usernameController.text);
     } else {}
     setState(() {
       _isLoading = false;
@@ -36,7 +46,8 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Login Screen"),
+        title: Text(" SignUp"),
+        backgroundColor: Colors.blueGrey,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -44,14 +55,13 @@ class _LoginScreenState extends State<LoginScreen> {
             Container(
               height: 300,
               child: SvgPicture.asset(
-                'assets/images/4.svg',
+                'assets/images/5.svg',
                 fit: BoxFit.cover,
               ),
             ),
             Container(
               margin: EdgeInsets.all(10),
               child: Card(
-                margin: EdgeInsets.all(10),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)),
                 elevation: 4,
@@ -60,12 +70,19 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: <Widget>[
+                      TextFormField(
+                        decoration: InputDecoration(
+                          labelText: 'Username',
+                          prefixIcon: Icon(Icons.account_circle),
+                        ),
+                        controller: usernameController,
+                      ),
                       TextField(
                         decoration: InputDecoration(
                           labelText: 'Email',
-                          prefixIcon: Icon(Icons.account_circle),
+                          prefixIcon: Icon(Icons.lock),
                         ),
-                        controller: userController,
+                        controller: emailController,
                       ),
                       TextField(
                         obscureText: true,
@@ -73,15 +90,16 @@ class _LoginScreenState extends State<LoginScreen> {
                           labelText: 'Password',
                           prefixIcon: Icon(Icons.lock),
                         ),
-                        controller: passController,
+                        controller: passwordController,
                       ),
                       _isLoading
                           ? CircularProgressIndicator()
                           : RaisedButton(
+                              color: Theme.of(context).primaryColor,
                               onPressed: () {
                                 onSaved(context);
                               },
-                              child: Text('Login'),
+                              child: Text('Signup'),
                               textColor: Colors.purple,
                             ),
                     ],
