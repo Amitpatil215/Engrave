@@ -69,11 +69,7 @@ class Auth with ChangeNotifier {
               "password": password,
             },
           ));
-      // final response = await httpUsing.get(
-      //   url,
-      //   headers: headers,
-      // );
-
+      
       final responseData = json.decode(response.body);
       print("responded data $responseData.");
       print(responseData['user']['_id']);

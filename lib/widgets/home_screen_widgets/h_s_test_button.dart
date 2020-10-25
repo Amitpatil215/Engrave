@@ -1,4 +1,5 @@
 import 'package:engrave/provider/auth_provider.dart';
+import 'package:engrave/provider/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,6 +13,17 @@ class HSTestButton extends StatelessWidget {
       ),
       onPressed: () async {
         print("OK");
+        final token = Provider.of<Auth>(context, listen: false).token;
+
+        print(token);
+
+        // for getting all deta
+        await Provider.of<UserProvider>(context, listen: false).getAllDeta();
+
+        // for getting user details
+        // await Provider.of<UserProvider>(context, listen: false)
+        //     .fetchUser(token);
+
         // await Provider.of<Auth>(context, listen: false).signUP(
         //   email: "testgmial.com",
         //   password: "test123",
@@ -27,7 +39,7 @@ class HSTestButton extends StatelessWidget {
         //   );
         // }
 
-        print(Provider.of<Auth>(context, listen: false).isAuthenticated);
+        //print(Provider.of<Auth>(context, listen: false).isAuthenticated);
 
         //await Provider.of<Auth>(context, listen: false).logOut();
       },
