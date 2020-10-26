@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -7,16 +6,10 @@ import 'package:image_picker/image_picker.dart';
 
 class UseHashtag extends StatefulWidget {
   static const routename = 'hashtag';
-=======
-import 'package:flutter/material.dart';
-
-class UseHashtag extends StatefulWidget {
->>>>>>> 81e9e8bf9e4bfdcbd2e4cc9ed7682bb92f1a01c5
   UseHashtagState createState() => new UseHashtagState();
 }
 
 class UseHashtagState extends State<UseHashtag> {
-<<<<<<< HEAD
   List<String> list = ['Sketches', 'Digital art', 'Painting', 'Craft'];
   String selected = '';
 
@@ -186,18 +179,4 @@ class UseHashtagState extends State<UseHashtag> {
       ),
     );
   }
-=======
-  List<String> list = ['Sketches', 'Digital art', 'Painting', 'Craft'],
-      selected = [];
-  TextEditingController tc;
-
-  @override
-  void initState() {
-    super.initState();
-    tc = TextEditingController();
-  }
-
-  @override
-  Widget build(BuildContext context) {}
->>>>>>> 81e9e8bf9e4bfdcbd2e4cc9ed7682bb92f1a01c5
 }

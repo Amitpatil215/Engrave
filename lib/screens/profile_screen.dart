@@ -1,17 +1,10 @@
 //import 'dart:html';
 import 'dart:io';
-<<<<<<< HEAD
 import 'package:engrave/widgets/profile_screen-widgets/p_s_use_hashtag.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_cropper/image_cropper.dart';
 import '../widgets/profile_screen-widgets/p_s_use_hashtag.dart';
-=======
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:image_cropper/image_cropper.dart';
-//import '../widgets/profile_screen-widgets/p_s_pick_image.dart';
->>>>>>> 81e9e8bf9e4bfdcbd2e4cc9ed7682bb92f1a01c5
 import 'package:image_picker/image_picker.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -21,10 +14,7 @@ class ProfileScreen extends StatefulWidget {
 
 class ProfileScreenState extends State<ProfileScreen> {
   File selectedFile;
-<<<<<<< HEAD
   File uploadImage;
-=======
->>>>>>> 81e9e8bf9e4bfdcbd2e4cc9ed7682bb92f1a01c5
 
   Widget getImageWidget() {
     if (selectedFile != null) {
@@ -35,7 +25,7 @@ class ProfileScreenState extends State<ProfileScreen> {
         fit: BoxFit.cover,
       );
     } else {
-      return Image.asset(
+      return SvgPicture.asset(
         'assets/images/blank_canvas.svg',
         width: 200,
         height: 200,
@@ -44,13 +34,10 @@ class ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
-<<<<<<< HEAD
   Widget uploadImageWidget() {
     return UseHashtag();
   }
 
-=======
->>>>>>> 81e9e8bf9e4bfdcbd2e4cc9ed7682bb92f1a01c5
   getImage(ImageSource source) async {
     File image = await ImagePicker.pickImage(source: source);
     File cropped = await ImageCropper.cropImage(sourcePath: image.path);
@@ -75,11 +62,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                   IconButton(
                     icon: Icon(Icons.arrow_back_ios),
                     onPressed: null,
-<<<<<<< HEAD
                     color: Colors.deepOrange,
-=======
-                    color: Colors.white,
->>>>>>> 81e9e8bf9e4bfdcbd2e4cc9ed7682bb92f1a01c5
                   ),
                   Container(
                     width: 125.0,
@@ -88,7 +71,6 @@ class ProfileScreenState extends State<ProfileScreen> {
                       children: [
                         IconButton(
                           icon: Icon(Icons.add_a_photo_rounded),
-<<<<<<< HEAD
                           onPressed: () {
                             getImage(ImageSource.camera);
                           },
@@ -102,16 +84,6 @@ class ProfileScreenState extends State<ProfileScreen> {
                                   .pushNamed(UseHashtag.routename);
                             },
                             color: Colors.deepOrange)
-=======
-                          onPressed: getImage(ImageSource.camera),
-                          //add the image picker here after it select the hashtag
-                          color: Colors.white,
-                        ),
-                        IconButton(
-                            icon: Icon(Icons.menu),
-                            onPressed: null,
-                            color: Colors.white)
->>>>>>> 81e9e8bf9e4bfdcbd2e4cc9ed7682bb92f1a01c5
                       ],
                     ),
                   )
