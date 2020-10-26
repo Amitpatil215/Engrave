@@ -102,7 +102,6 @@ class ProfileScreenState extends State<ProfileScreen> {
             children: [
               Column(
                 children: [
-
                   Container(
                     width: double.infinity,
                     padding: EdgeInsets.all(30),
@@ -117,16 +116,15 @@ class ProfileScreenState extends State<ProfileScreen> {
                     ),
                   ),
                   Container(
-                    width: double.maxFinite,
-                    alignment: Alignment.centerRight,
-                    child: Card(
-                      //if user could insert a profile picture
-                      //child: PickImage(),
-                      //under written code if for reference where
-                      //our profile pic should appear
-                      child: getImageWidget(),
-                      )
-
+                      width: double.maxFinite,
+                      alignment: Alignment.centerRight,
+                      child: Card(
+                        //if user could insert a profile picture
+                        //child: PickImage(),
+                        //under written code if for reference where
+                        //our profile pic should appear
+                        child: getImageWidget(),
+                      )),
                   IconButton(
                     icon: Icon(Icons.arrow_back_ios),
                     onPressed: null,
@@ -153,7 +151,6 @@ class ProfileScreenState extends State<ProfileScreen> {
                             },
                             color: Colors.deepOrange)
                       ],
-
                     ),
                   ),
                 ],
