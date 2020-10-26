@@ -24,6 +24,7 @@ class UseHashtagState extends State<UseHashtag> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -178,5 +179,6 @@ class UseHashtagState extends State<UseHashtag> {
         ],
       ),
     );
+
   }
 }
