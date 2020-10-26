@@ -170,7 +170,10 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.4"
+<<<<<<< HEAD
+=======
 
+>>>>>>> 81e9e8bf9e4bfdcbd2e4cc9ed7682bb92f1a01c5
   image_cropper:
     dependency: "direct main"
     description:
@@ -192,6 +195,8 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.1"
+<<<<<<< HEAD
+=======
 
   intl:
     dependency: transitive
@@ -208,6 +213,7 @@ packages:
     source: hosted
     version: "0.6.2"
 
+>>>>>>> 81e9e8bf9e4bfdcbd2e4cc9ed7682bb92f1a01c5
   matcher:
     dependency: transitive
     description:
@@ -285,6 +291,8 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.0"
+<<<<<<< HEAD
+=======
 
   platform:
     dependency: transitive
@@ -294,10 +302,16 @@ packages:
     source: hosted
     version: "2.2.1"
 
+>>>>>>> 81e9e8bf9e4bfdcbd2e4cc9ed7682bb92f1a01c5
   plugin_platform_interface:
     dependency: transitive
     description:
       name: plugin_platform_interface
+<<<<<<< HEAD
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.3"
+=======
 
       url: "https://pub.dartlang.org"
     source: hosted
@@ -314,6 +328,7 @@ packages:
     source: hosted
     version: "3.0.13"
 
+>>>>>>> 81e9e8bf9e4bfdcbd2e4cc9ed7682bb92f1a01c5
   provider:
     dependency: "direct main"
     description:
