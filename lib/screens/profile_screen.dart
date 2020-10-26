@@ -2,10 +2,12 @@
 import 'dart:io';
 import 'package:engrave/provider/auth_provider.dart';
 import 'package:engrave/provider/firestore_image_upload.dart';
+import 'package:engrave/widgets/profile_screen-widgets/p_s_use_hashtag.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_cropper/image_cropper.dart';
-//import '../widgets/profile_screen-widgets/p_s_pick_image.dart';
+import '../widgets/profile_screen-widgets/p_s_use_hashtag.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
@@ -16,6 +18,7 @@ class ProfileScreen extends StatefulWidget {
 
 class ProfileScreenState extends State<ProfileScreen> {
   File selectedFile;
+  File uploadImage;
 
   Widget getImageWidget() {
     if (selectedFile != null) {
@@ -33,6 +36,10 @@ class ProfileScreenState extends State<ProfileScreen> {
         fit: BoxFit.cover,
       );
     }
+  }
+
+  Widget uploadImageWidget() {
+    return UseHashtag();
   }
 
   getImage(ImageSource source) async {
@@ -95,6 +102,7 @@ class ProfileScreenState extends State<ProfileScreen> {
             children: [
               Column(
                 children: [
+
                   Container(
                     width: double.infinity,
                     padding: EdgeInsets.all(30),
@@ -117,6 +125,35 @@ class ProfileScreenState extends State<ProfileScreen> {
                       //under written code if for reference where
                       //our profile pic should appear
                       child: getImageWidget(),
+                      )
+
+                  IconButton(
+                    icon: Icon(Icons.arrow_back_ios),
+                    onPressed: null,
+                    color: Colors.deepOrange,
+                  ),
+                  Container(
+                    width: 125.0,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        IconButton(
+                          icon: Icon(Icons.add_a_photo_rounded),
+                          onPressed: () {
+                            getImage(ImageSource.camera);
+                          },
+                          //add the image picker here after it select the hashtag
+                          color: Colors.deepOrange,
+                        ),
+                        IconButton(
+                            icon: Icon(Icons.add),
+                            onPressed: () {
+                              Navigator.of(context)
+                                  .pushNamed(UseHashtag.routename);
+                            },
+                            color: Colors.deepOrange)
+                      ],
+
                     ),
                   ),
                 ],

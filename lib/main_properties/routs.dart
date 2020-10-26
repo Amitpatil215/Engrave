@@ -1,3 +1,4 @@
+import 'package:engrave/widgets/profile_screen-widgets/p_s_use_hashtag.dart';
 import 'package:flutter/material.dart';
 import '../screens/login_screen.dart';
 
@@ -21,5 +22,8 @@ Map<String, Widget Function(BuildContext)> routeTable = {
   ProfileScreen.routeName: (ctx) {
     return ProfileScreen();
 
+  },
+  UseHashtag.routename: (ctx) {
+    return UseHashtag();
   },
 };
